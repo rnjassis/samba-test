@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -6,10 +5,20 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-
+	<title> Upload de vídeo </title>
 </h:head>
 
 <h:body>
-
+	<h:form>
+		<p:panel id="panelUpload" header="Upload do arquivo de vídeo"
+			style="width: 100%">
+			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+				style="width: 100%">
+				<p:outputLabel value="Selecione o arquivo" />
+				<p:fileUpload fileUploadListener="#{uploadBean.handleFileUpload}"
+					mode="advanced" auto="true" skinSimple="true"/>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
 </h:body>
 </html>
