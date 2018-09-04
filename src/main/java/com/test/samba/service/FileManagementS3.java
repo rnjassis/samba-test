@@ -1,29 +1,30 @@
-package com.test.samba.servico;
+package com.test.samba.service;
 
 import java.util.UUID;
 
 import org.primefaces.model.UploadedFile;
 
-import com.test.samba.exception.GerenciamentoDeArquivoS3Exception;
 import com.test.samba.util.S3IO;
-
-public class GerenciamentoDeArquivoS3 {
-	public GerenciamentoDeArquivoS3() {
-		// TODO Auto-generated constructor stub
+/**
+ * Handles the files on S3, wich are located in a mounted folder in EC2
+ * @author silva
+ *
+ */
+public class FileManagementS3 {
+	public FileManagementS3() {
+		
 	}
 
-	public String salvarArquivoS3(UploadedFile uFile) throws GerenciamentoDeArquivoS3Exception {
-		try {
+	public String SaveFile(UploadedFile uFile) throws Exception {
 			String originalFileName = uFile.getFileName();
 			String generatedUUID = UUID.randomUUID().toString().replaceAll("-", "");
 			String extension = originalFileName.substring(originalFileName.lastIndexOf("."), originalFileName.length());
 			String finalName = generatedUUID + extension;
+			
+
 			uFile.write(S3IO.getInputFilePath() + "/" + finalName);
 
 			return finalName;
-		} catch (Exception e) {
-			throw new GerenciamentoDeArquivoS3Exception("Error writing the input file: ", e);
-		}
 
 	}
 }
