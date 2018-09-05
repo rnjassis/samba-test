@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Ver vídeo enviado</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panelGrid columns="1">
+			<p:media value="#{watchBean.stream}" width="854" height="480"
+				player="quicktime" cache="false">
+			</p:media>
+
+			<p:commandButton action="#{watchBean.back}" value="Voltar" />
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

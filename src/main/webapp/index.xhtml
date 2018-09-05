@@ -5,21 +5,37 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-	<title> Samba Test Upload e Visualização</title>
+	<title>Samba Test Upload e Visualização</title>
 </h:head>
 
 <h:body>
-	<h:form>
+	<h:form id="mainForm">
+		<p:poll id="idPoll" interval="1"
+			listener="#{uploadBean.checkForConverted}" widgetVar="poll"
+			process="@this" />
+
+		<p:growl id="growl" life="4000" />
+		
+		<!-- Upload panel -->
 		<p:panel id="panelUpload" header="Upload do arquivo de vídeo"
-			style="width: 100%">
+			style="width: 90%; margin-left: auto; margin-right: auto;">
 			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
 				style="width: 100%">
 				<p:outputLabel value="Selecione o arquivo" />
 				<p:fileUpload fileUploadListener="#{uploadBean.handleFileUpload}"
-					mode="advanced" auto="true" skinSimple="true"/>
+					mode="advanced" auto="true" skinSimple="true" />
 
+				<h:button id="btnRedirect" value="Ver vídeo" outcome="watch.xhtml"
+					rendered="#{uploadBean.buttonVisible}" />
 			</p:panelGrid>
 		</p:panel>
+
+		<!--  Modal dialog -->
+		<p:dialog id="_dlg1" widgetVar="dlg1" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:outputLabel>Convertendo arquivo</p:outputLabel>
+		</p:dialog>
+
 	</h:form>
 </h:body>
 </html>
