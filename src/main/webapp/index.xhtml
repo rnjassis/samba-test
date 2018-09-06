@@ -23,7 +23,7 @@
 				style="width: 100%">
 				<p:outputLabel value="Selecione o arquivo" />
 				<p:fileUpload fileUploadListener="#{uploadBean.handleFileUpload}"
-					mode="advanced" auto="true" skinSimple="true" />
+					mode="advanced" auto="true" skinSimple="true" label="Escolher"/>
 
 				<h:button id="btnRedirect" value="Ver vídeo" outcome="watch.xhtml"
 					rendered="#{uploadBean.buttonVisible}" />
@@ -33,7 +33,7 @@
 		<!--  Modal dialog -->
 		<p:dialog id="_dlg1" widgetVar="dlg1" modal="true" draggable="false"
 			closable="false" resizable="false" showHeader="false">
-			<p:outputLabel>Convertendo arquivo</p:outputLabel>
+			<p:outputLabel>Convertendo arquivo, por favor aguarde</p:outputLabel>
 		</p:dialog>
 
 	</h:form>

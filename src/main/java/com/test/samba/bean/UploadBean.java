@@ -101,10 +101,10 @@ public class UploadBean {
 			result = futureCall.get();
 			executor.shutdown();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		System.out.println(result);
