@@ -13,6 +13,7 @@ import javax.faces.view.ViewScoped;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
+import com.test.samba.service.FileManagementS3;
 import com.test.samba.util.S3IO;
 
 /**
@@ -38,10 +39,8 @@ public class WatchBean {
 	public StreamedContent getStream() throws IOException {
 		String fileName = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("video");
 
-		File file = new File(S3IO.getOutputFilePath() + "/" + fileName);
-		InputStream is = new FileInputStream(file);
-
-		return new DefaultStreamedContent(is, "video/mp4", file.getName());
+		FileManagementS3 FMS3 = new FileManagementS3();
+		return FMS3.getFile(fileName);
 	}
 
 	/**
